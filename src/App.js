@@ -1,9 +1,9 @@
-import CardProduct from "./components/CardProduct/CardProduct";
+import VideoDetail from "./views/VideoDetail/VideoDetail";
 
 function App() {
   return (
     <div className="App">
-      <CardProduct />
+      <VideoDetail />
     </div>
   );
 }
