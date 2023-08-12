@@ -13,6 +13,7 @@ function CardVideo() {
         p={2}
         color="white"
         borderRadius={8}
+        margin={5}
       >
         <Flex h="100%" justifyContent="space-between" flexDirection="column">
           <Box w="100%" h="25px">
@@ -44,6 +45,7 @@ function CardVideo() {
                 variant="solid"
                 bg="tokopedia.red"
                 fontSize="10px"
+                fontWeight={900}
                 paddingTop={0.5}
                 paddingBottom={1}
               >
@@ -53,7 +55,7 @@ function CardVideo() {
               </Badge>
               <Badge
                 variant="solid"
-                bg="tokopedia.green"
+                bg="tokopedia.green.primary"
                 fontSize="10px"
                 paddingTop={0.5}
                 paddingBottom={0.5}

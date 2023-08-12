@@ -1,11 +1,5 @@
-import CardVideo from "./components/CardVideo/CardVideo";
-
 function App() {
-  return (
-    <div className="App">
-      <CardVideo />
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
