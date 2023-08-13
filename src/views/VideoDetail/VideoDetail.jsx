@@ -49,7 +49,7 @@ function VideoDetail() {
             Rekomendasi Video Lainnya
           </Text>
           <Flex flexWrap="wrap" justifyContent="space-between">
-            <CardVideo />
+            <CardVideo title="halo"/>
             <CardVideo />
             <CardVideo />
             <CardVideo />

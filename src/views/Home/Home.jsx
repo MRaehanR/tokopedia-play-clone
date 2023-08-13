@@ -1,29 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
 import CardVideo from "../../components/CardVideo/CardVideo";
 import CategoryList from "../../components/CategoryList/CategoryList";
 
 function Home() {
+  const [videos, setVideos] = useState([]);
+
+  const fetchVideos = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/videos`
+      );
+      const data = await response.json();
+      setVideos(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchVideos();
+  }, []);
+
   return (
     <Box padding={3}>
       <Box marginTop={5}>
         <CategoryList />
       </Box>
       <Box>
-        <CardVideo
-          onlyAtLive={true}
-          discountCoupon={true}
-          isLive={true}
-          title="Lukisan Antik"
-          store="lukian terpercaya"
-        />
-        <CardVideo
-          onlyAtLive={true}
-          discountCoupon={true}
-          isLive={true}
-          title="Lukisan Antik"
-          store="lukian terpercaya"
-        />
+        {videos.map((video, key) => (
+          <CardVideo
+            key={key}
+            onlyAtLive={video.onlyAtLive}
+            discountCoupon={video.discountCoupon}
+            isLive={true}
+            title={video.title}
+            store={video.storeName}
+            views={video.totalView}
+            image={video.imgUrl}
+          />
+        ))}
       </Box>
     </Box>
   );
