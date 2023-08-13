@@ -8,6 +8,15 @@ function Home() {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
 
+  const clickHandle = ({ id, videoUrl }) => {
+    navigate("/detail", {
+      state: {
+        videoId: id,
+        videoUrl: videoUrl,
+      },
+    });
+  };
+
   const fetchVideos = async () => {
     try {
       const response = await fetch(
@@ -40,14 +49,7 @@ function Home() {
             store={video.storeName}
             views={video.totalView}
             image={video.imgUrl}
-            onClick={() =>
-              navigate("/detail", {
-                state: {
-                  videoId: video.id,
-                  videoUrl: video.videoUrl,
-                },
-              })
-            }
+            onClick={() => clickHandle(video)}
           />
         ))}
       </Box>

@@ -11,7 +11,7 @@ import React from "react";
 
 function CardProduct(props) {
   return (
-    <Card maxW="220px" h="350px" marginBottom={5} marginTop={5}>
+    <Card w="220px" h="350px" marginBottom={5} marginTop={5}>
       <Image
         objectFit="cover"
         src={props.imgUrl}

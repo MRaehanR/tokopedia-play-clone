@@ -58,8 +58,9 @@ function VideoDetail() {
             },
           }}
         >
-          {products.map((product) => (
+          {products.map((product, key) => (
             <CardProduct
+              key={key}
               title={product.title}
               priceFormat={product.priceFormat}
               imgUrl={product.imgUrl}
@@ -81,7 +82,7 @@ function VideoDetail() {
         <ReactPlayer
           url={videoUrl}
           // playing="true"
-          controls="true"
+          controls={true}
           width="100%"
           height="700px"
         />
