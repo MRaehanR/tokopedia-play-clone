@@ -41,7 +41,7 @@ function VideoDetail() {
   useEffect(() => {
     fetchProducts();
     fetchVideos();
-  }, []);
+  }, [videoId, videoUrl]);
 
   return (
     <Flex justifyContent="space-between">
