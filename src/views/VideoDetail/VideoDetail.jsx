@@ -5,15 +5,20 @@ import CardProduct from "../../components/CardProduct/CardProduct";
 import ReactPlayer from "react-player";
 import CardVideo from "../../components/CardVideo/CardVideo";
 import CommentMessage from "../../components/CommentMessage/CommentMessage";
+import useDataFetch from "../../hooks/useDataFetch";
 
 function VideoDetail() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { videoId, videoUrl } = state;
 
-  const [products, setProducts] = useState([]);
-  const [videos, setVideos] = useState([]);
-  const [comments, setComments] = useState([]);
+  const videos = useDataFetch(`${process.env.REACT_APP_SERVER_URL}/videos`);
+  const products = useDataFetch(
+    `${process.env.REACT_APP_SERVER_URL}/products/${videoId}`
+  );
+  const comments = useDataFetch(
+    `${process.env.REACT_APP_SERVER_URL}/comments/${videoId}`
+  );
   const [username, setUsername] = useState("");
   const [commentMessage, setCommentMessage] = useState("");
 
@@ -50,48 +55,6 @@ function VideoDetail() {
     }
   };
 
-  const fetchVideos = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_SERVER_URL}/videos`
-      );
-      const data = await response.json();
-      setVideos(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_SERVER_URL}/products/${videoId}`
-      );
-      const data = await response.json();
-      setProducts(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchComments = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_SERVER_URL}/comments/${videoId}`
-      );
-      const data = await response.json();
-      setComments(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-    fetchVideos();
-    fetchComments();
-  }, [videoId, videoUrl]);
-
   return (
     <Flex justifyContent="space-between">
       <Box h="100vh" w="400px">
@@ -111,7 +74,7 @@ function VideoDetail() {
             <CardProduct
               key={key}
               title={product.title}
-              priceFormat={product.priceFormat}
+              price={product.price}
               imgUrl={product.imgUrl}
               productUrl={product.productUrl}
             />
