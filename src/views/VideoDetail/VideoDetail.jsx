@@ -74,7 +74,7 @@ function VideoDetail() {
             <CardProduct
               key={key}
               title={product.title}
-              priceFormat={product.priceFormat}
+              price={product.price}
               imgUrl={product.imgUrl}
               productUrl={product.productUrl}
             />
