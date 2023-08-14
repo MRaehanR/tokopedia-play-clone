@@ -17,6 +17,10 @@ function Home() {
     });
   };
 
+  const getDataFromCategoryList = (data) => {
+    setVideos(data);
+  };
+
   const fetchVideos = async () => {
     try {
       const response = await fetch(
@@ -36,7 +40,7 @@ function Home() {
   return (
     <Box padding={3}>
       <Box marginTop={5}>
-        <CategoryList />
+        <CategoryList getData={getDataFromCategoryList} />
       </Box>
       <Box>
         {videos.map((video, key) => (
