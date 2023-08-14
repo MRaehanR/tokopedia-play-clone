@@ -73,7 +73,7 @@ function ModalLogin() {
             <ModalHeader></ModalHeader>
             <Stack spacing={4}>
               <form onSubmit={handleSubmit}>
-                <FormControl id="email">
+                <FormControl id="email" isRequired>
                   <FormLabel>Username</FormLabel>
                   <Input
                     type="text"
