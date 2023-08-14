@@ -176,13 +176,15 @@ function VideoDetail() {
             },
           }}
         >
-          {comments.map((comment, key) => (
-            <CommentMessage
-              key={key}
-              username={comment.username}
-              text={comment.text}
-            />
-          ))}
+          <Flex flexDirection="column">
+            {comments.map((comment, key) => (
+              <CommentMessage
+                key={key}
+                username={comment.username}
+                text={comment.text}
+              />
+            ))}
+          </Flex>
         </Box>
         <Box h="20%" w="100%" padding={3}>
           <form onSubmit={postComment}>
