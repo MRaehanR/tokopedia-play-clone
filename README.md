@@ -15,6 +15,7 @@
 
 ## Features
 
+- Search Video
 - Home Page
 - Video Detail Page
 - User can see video list with thumbnail from YouTube in home page
